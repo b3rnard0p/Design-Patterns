@@ -1,4 +1,4 @@
-public class Computador {
+class Computador {
     private String processador;
     private int memoriaRAM;
     private int armazenamento;
@@ -19,16 +19,10 @@ public class Computador {
 
     public void exibirConfiguracao() {
         System.out.println("Processador: " + processador);
-        System.out.println("RAM: " + memoriaRAM );
-        System.out.println("Armazenamento: " + armazenamento);
-
-        if (placaVideo != null) {
-            System.out.println("Placa de vídeo: " + placaVideo);
-        }
-        if (sistemaOperacional != null) {
-            System.out.println("Sistema operacional: " + sistemaOperacional);
-        }
-
+        System.out.println("Memória RAM: " + memoriaRAM + " GB");
+        System.out.println("Armazenamento: " + armazenamento + " GB");
+        if (placaVideo != null) System.out.println("Placa de vídeo: " + placaVideo);
+        if (sistemaOperacional != null) System.out.println("Sistema operacional: " + sistemaOperacional);
         System.out.println("Wi-Fi: " + (wifi ? "Sim" : "Não"));
         System.out.println("Bluetooth: " + (bluetooth ? "Sim" : "Não"));
     }
@@ -78,16 +72,15 @@ public class Computador {
         }
 
         public Computador build() {
-            if (this.processador == null || this.processador.trim().isEmpty()) {
-                throw new IllegalArgumentException("Erro: O processador não pode ser vazio.");
+            if (processador == null || processador.trim().isEmpty()) {
+                throw new IllegalArgumentException("Erro: Processador é obrigatório e não pode ser vazio.");
             }
-            if (this.memoriaRAM <= 0) {
-                throw new IllegalArgumentException("Erro: A RAM deve ser maior que zero.");
+            if (memoriaRAM <= 0) {
+                throw new IllegalArgumentException("Erro: Memória RAM deve ser maior que zero.");
             }
-            if (this.armazenamento <= 0) {
-                throw new IllegalArgumentException("Erro: O armazenamento deve ser maior que zero.");
+            if (armazenamento <= 0) {
+                throw new IllegalArgumentException("Erro: Armazenamento deve ser maior que zero.");
             }
-
             return new Computador(this);
         }
     }
